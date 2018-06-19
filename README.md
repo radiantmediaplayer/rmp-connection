@@ -8,8 +8,8 @@ We use it as a best-guess for first estimated available bandwidth to fast-start 
 
 ## Usage as ES2015 module
 ```
-import { RmpConnection } from '../../js/rmp-connection';
-var estimate = RmpConnection.getBandwidthEstimate();
+import { RMPCONNECTION } from '../../js/rmp-connection';
+var estimate = RMPCONNECTION.getBandwidthEstimate();
 console.log(estimate)
 ```
 

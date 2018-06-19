@@ -3,7 +3,7 @@
  * rmp-connection 0.1.0 | https://github.com/radiantmediaplayer/rmp-connection
  */
 
-const RmpConnection = {};
+const RMPCONNECTION = {};
 
 var _getArbitraryBitrateData = function () {
   // we actually have indication here: http://wicg.github.io/netinfo/#effective-connection-types
@@ -33,7 +33,7 @@ var _getArbitraryBitrateData = function () {
   return equivalentMbpsArray;
 };
 
-RmpConnection.getBandwidthEstimate = function () {
+RMPCONNECTION.getBandwidthEstimate = function () {
   // we are not in a supported environment - exit
   if (typeof window === 'undefined') {
     return;
@@ -90,4 +90,4 @@ RmpConnection.getBandwidthEstimate = function () {
   return null;
 };
 
-export { RmpConnection };
+export { RMPCONNECTION };

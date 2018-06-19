@@ -23,12 +23,12 @@ var _rmpConnection = require('../../js/rmp-connection');
     bwElement.insertAdjacentHTML('afterbegin', htmlText);
   };
 
-  var estimate = _rmpConnection.RmpConnection.getBandwidthEstimate();
+  var estimate = _rmpConnection.RMPCONNECTION.getBandwidthEstimate();
   _appendBWData(estimate);
 
   // every 5 sec we update demo
   setInterval(function () {
-    estimate = _rmpConnection.RmpConnection.getBandwidthEstimate();
+    estimate = _rmpConnection.RMPCONNECTION.getBandwidthEstimate();
     _appendBWData(estimate);
   }, 5000);
 })();
@@ -44,7 +44,7 @@ Object.defineProperty(exports, "__esModule", {
  * rmp-connection 0.1.0 | https://github.com/radiantmediaplayer/rmp-connection
  */
 
-var RmpConnection = {};
+var RMPCONNECTION = {};
 
 var _getArbitraryBitrateData = function _getArbitraryBitrateData() {
   // we actually have indication here: http://wicg.github.io/netinfo/#effective-connection-types
@@ -69,7 +69,7 @@ var _getArbitraryBitrateData = function _getArbitraryBitrateData() {
   return equivalentMbpsArray;
 };
 
-RmpConnection.getBandwidthEstimate = function () {
+RMPCONNECTION.getBandwidthEstimate = function () {
   // we are not in a supported environment - exit
   if (typeof window === 'undefined') {
     return;
@@ -126,6 +126,6 @@ RmpConnection.getBandwidthEstimate = function () {
   return null;
 };
 
-exports.RmpConnection = RmpConnection;
+exports.RMPCONNECTION = RMPCONNECTION;
 
 },{}]},{},[1]);

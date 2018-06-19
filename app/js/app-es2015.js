@@ -1,4 +1,4 @@
-import { RmpConnection } from '../../js/rmp-connection';
+import { RMPCONNECTION } from '../../js/rmp-connection';
 
 (() => {
 
@@ -20,12 +20,12 @@ import { RmpConnection } from '../../js/rmp-connection';
     bwElement.insertAdjacentHTML('afterbegin', htmlText);
   };
 
-  var estimate = RmpConnection.getBandwidthEstimate();
+  var estimate = RMPCONNECTION.getBandwidthEstimate();
   _appendBWData(estimate);
 
   // every 5 sec we update demo
   setInterval(function () {
-    estimate = RmpConnection.getBandwidthEstimate();
+    estimate = RMPCONNECTION.getBandwidthEstimate();
     _appendBWData(estimate);
   }, 5000);
 
