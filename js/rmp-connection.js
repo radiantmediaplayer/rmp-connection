@@ -1,6 +1,6 @@
 /**
  * @license Copyright (c) 2015-2018 Radiant Media Player 
- * rmp-connection 0.1.1 | https://github.com/radiantmediaplayer/rmp-connection
+ * rmp-connection 0.1.2 | https://github.com/radiantmediaplayer/rmp-connection
  */
 
 const RMPCONNECTION = {};
@@ -79,7 +79,7 @@ RMPCONNECTION.getBandwidthEstimate = function () {
       case 'ethernet':
       case 'wifi':
       case 'wimax':
-        return 1;
+        return 1.4;
       case 'bluetooth':
         return 0.35;
     }
