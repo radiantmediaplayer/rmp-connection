@@ -25,7 +25,10 @@ var _rmpConnection = require('../../js/rmp-connection');
 
   var estimate = _rmpConnection.RmpConnection.getBandwidthEstimate();
   _appendBWData(estimate);
+
+  // every 5 sec we update demo
   setInterval(function () {
+    estimate = _rmpConnection.RmpConnection.getBandwidthEstimate();
     _appendBWData(estimate);
   }, 5000);
 })();
