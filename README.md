@@ -1,29 +1,28 @@
-# rmp-detachable-player
+# rmp-connection
 
-rmp-detachable-player is an open-source extension for [Radiant Media Player](https://www.radiantmediaplayer.com) 
-allowing to attach/detach the player when scrolling into a page (a.k.a. PiP - picture in picture). As such the player can be visible at all time regardless of the page scrolling position. This extension makes use of the new [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+JavaScript to detect effective available bandwidth in a web envrionment WITHOUT using AJAX or Fetch. This is based on the [W3C Network Information API](http://wicg.github.io/netinfo/).
+[Network Information API support is not 100% yet](https://caniuse.com/#feat=netinfo) but since it is supported in Chrome 61+, we feel it can already be used as a valid indicator.
+We use it as a best-guess for first estimated available bandwidth to fast-start ABR streaming (with hls.js or Shaka player for example) in [Radiant Media Player](https://www.radiantmediaplayer.com).
 
-## Features
-- In-page PiP player
-- Automatic resizing of player based on attach/detach states 
-- Mobile-ready
-- Works with in-stream and out-stream video ads
-- Easily extended with JavaScript and CSS
+## Usage as ES2015 module
+`import { RmpConnection } from '../../js/rmp-connection';`
+`var estimate = RmpConnection.getBandwidthEstimate();`
+`console.log(estimate)`
+The `getBandwidthEstimate` method will return (number|null) representing the estimated bandwidth in Mbps.
 
-## Usage
-Download latest release from the releases tab. See index.html and js/rmp-detach.js files for a better understanding of the attach/detach logic. 
-For outstream video ad see outstream-video-ad.html and js/rmp-detach-outstream-video-ad.js files.
-Adapt those examples with your player settings and to fit your page layout.
+## Build the demo app (ES2015 > ES5)
+`git clone`
+`npm install -g browserify`
+`npm install`
+Run: `browserify app/js/app-es2015.js -o app/js/app.js -t [ babelify ] -v`
 
 ## Example
-An example of implementation can be viewed here: [https://www.radiantmediaplayer.com/docs/latest/rmp-detachable-player/](https://www.radiantmediaplayer.com/docs/latest/rmp-detachable-player/)
-
-Another example of implementation showing how to use outstream video ads can be viewed here: [https://www.radiantmediaplayer.com/docs/latest/rmp-detachable-player/outstream-video-ad.html](https://www.radiantmediaplayer.com/docs/latest/rmp-detachable-player/outstream-video-ad.html)
+The index.html demo can be found live at [https://www.radiantmediaplayer.com/docs/latest/gist/rmp-connection/app/](https://www.radiantmediaplayer.com/docs/latest/gist/rmp-connection/app/)
 
 ## Issues
 Issues should be submitted in this GitHub page. We will do our best to review them.
 
 ## License
-rmp-detachable-player is released under MIT
+rmp-connection is released under MIT
 
 Radiant Media Player has its own license which can be found here: [https://www.radiantmediaplayer.com/terms-of-service.html](https://www.radiantmediaplayer.com/terms-of-service.html)
