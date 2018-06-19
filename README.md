@@ -6,14 +6,22 @@ We use it as a best-guess for first estimated available bandwidth to fast-start 
 
 ## Usage as ES2015 module
 `import { RmpConnection } from '../../js/rmp-connection';`
+
 `var estimate = RmpConnection.getBandwidthEstimate();`
+
 `console.log(estimate)`
+
 The `getBandwidthEstimate` method will return (number|null) representing the estimated bandwidth in Mbps.
 
 ## Build the demo app (ES2015 > ES5)
-`git clone`
+`git clone https://github.com/radiantmediaplayer/rmp-connection.git`
+
+`cd rmp-connection`
+
 `npm install -g browserify`
+
 `npm install`
+
 Run: `browserify app/js/app-es2015.js -o app/js/app.js -t [ babelify ] -v`
 
 ## Example
