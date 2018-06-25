@@ -1,9 +1,18 @@
 /**
  * @license Copyright (c) 2015-2018 Radiant Media Player 
- * rmp-connection 0.1.2 | https://github.com/radiantmediaplayer/rmp-connection
+ * rmp-connection 0.1.3 | https://github.com/radiantmediaplayer/rmp-connection
  */
 
 const RMPCONNECTION = {};
+
+var connectionType = null;
+
+var _getConnectionType = function () {
+  if (typeof navigator.connection.type === 'string' && navigator.connection.type !== '') {
+    return navigator.connection.type;
+  }
+  return null;
+};
 
 var _getArbitraryBitrateData = function () {
   // we actually have indication here: http://wicg.github.io/netinfo/#effective-connection-types
@@ -15,8 +24,8 @@ var _getArbitraryBitrateData = function () {
   ];
   // if we are in a bluetooth/cellular connection.type with 4g assuming 1.4 Mbps is a bit high so we settle for 0.7 Mbps
   // for ethernet/wifi/wimax where available bandwidth is likely higher we settle for 2.1 Mbps
-  if (typeof navigator.connection.type === 'string' && navigator.connection.type !== '') {
-    switch (navigator.connection.type) {
+  if (connectionType) {
+    switch (connectionType) {
       case 'bluetooth':
       case 'cellular':
         equivalentMbpsArray[3] = 0.7;
@@ -47,8 +56,9 @@ RMPCONNECTION.getBandwidthEstimate = function () {
   if (typeof navigator.connection === 'undefined') {
     return null;
   }
+  connectionType = _getConnectionType();
   // we do have navigator.connection.type but it reports no connection - exit
-  if (typeof navigator.connection.type === 'string' && navigator.connection.type === 'none') {
+  if (connectionType && connectionType === 'none') {
     return null;
   }
   // we have navigator.connection.downlink - this is our best estimate
@@ -74,17 +84,21 @@ RMPCONNECTION.getBandwidthEstimate = function () {
     }
   }
   // finally we have navigator.connection.type - this won't help much 
-  if (typeof navigator.connection.type === 'string' && navigator.connection.type !== '') {
-    switch (navigator.connection.type) {
+  if (connectionType) {
+    switch (connectionType) {
       case 'ethernet':
       case 'wifi':
       case 'wimax':
         return 1.4;
       case 'bluetooth':
         return 0.35;
+      default:
+        break;
     }
     // there is no point in guessing bandwidth when navigator.connection.type is cellular this can vary from 0 to 100 Mbps 
-    // better to admit we do not know and find another way to detect bandwidth (likely from AJAX/Fetch if required)
+    // better to admit we do not know and find another way to detect bandwidth, this could include:
+    // - context guess: user-agent detection (mobile vs desktop), device width or pixel ratio 
+    // - AJAX/Fetch timing: this is outside rmp-connection scope
   }
   // nothing worked - exit
   return null;
