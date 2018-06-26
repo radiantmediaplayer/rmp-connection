@@ -10,7 +10,7 @@ import { RMPCONNECTION } from '../../js/rmp-connection';
   var _appendBWData = function (estimate) {
     var newTime = Math.round((window.performance.now() - time) / 1000);
     var text = '';
-    if (estimate === null) {
+    if (estimate < 0) {
       text = '<strong>unknown</strong>';
     } else {
       text = '<strong>' + estimate + ' Mbps</strong>';

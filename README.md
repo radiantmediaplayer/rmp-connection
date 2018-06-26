@@ -13,7 +13,7 @@ var estimate = RMPCONNECTION.getBandwidthEstimate();
 console.log(estimate)
 ```
 
-The `getBandwidthEstimate` method will return (number|null) representing the estimated bandwidth in Mbps.
+The `getBandwidthEstimate` method will return Number representing the estimated bandwidth in Mbps. -1 is returned if this value is not available.
 
 ## Build the demo app (ES2015 > ES5)
 ```

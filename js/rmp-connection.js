@@ -45,21 +45,21 @@ var _getArbitraryBitrateData = function () {
 RMPCONNECTION.getBandwidthEstimate = function () {
   // we are not in a supported environment - exit
   if (typeof window === 'undefined') {
-    return;
+    return -1;
   }
   // we are offline - exit
   if (typeof navigator.onLine !== 'undefined' && !navigator.onLine) {
-    return null;
+    return -1;
   }
   // we do not have navigator.connection - exit
   // for support see https://caniuse.com/#feat=netinfo
   if (typeof navigator.connection === 'undefined') {
-    return null;
+    return -1;
   }
   connectionType = _getConnectionType();
   // we do have navigator.connection.type but it reports no connection - exit
   if (connectionType && connectionType === 'none') {
-    return null;
+    return -1;
   }
   // we have navigator.connection.downlink - this is our best estimate
   // Returns the effective bandwidth estimate in megabits per second, rounded to the nearest multiple of 25 kilobits per seconds.
@@ -101,7 +101,7 @@ RMPCONNECTION.getBandwidthEstimate = function () {
     // - AJAX/Fetch timing: this is outside rmp-connection scope
   }
   // nothing worked - exit
-  return null;
+  return -1;
 };
 
 export { RMPCONNECTION };
