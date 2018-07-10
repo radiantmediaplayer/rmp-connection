@@ -1,6 +1,6 @@
 /**
  * @license Copyright (c) 2015-2018 Radiant Media Player 
- * rmp-connection 0.1.5 | https://github.com/radiantmediaplayer/rmp-connection
+ * rmp-connection 0.1.6 | https://github.com/radiantmediaplayer/rmp-connection
  */
 
 const RMPCONNECTION = {};
@@ -68,17 +68,17 @@ RMPCONNECTION.getBandwidthEstimate = function () {
   }
   // we have navigator.connection.effectiveType - this is our second best estimate
   // Returns the effective type of the connection meaning one of 'slow-2g', '2g', '3g', or '4g'. This value is determined using a combination of recently observed, round-trip time and downlink values.
-  const equivalentMbpsArray = _getArbitraryBitrateData();
+  const arbitraryBitrateData = _getArbitraryBitrateData();
   if (typeof navigator.connection.effectiveType === 'string' && navigator.connection.effectiveType !== '') {
     switch (navigator.connection.effectiveType) {
       case 'slow-2g':
-        return equivalentMbpsArray[0];
+        return arbitraryBitrateData[0];
       case '2g':
-        return equivalentMbpsArray[1];
+        return arbitraryBitrateData[1];
       case '3g':
-        return equivalentMbpsArray[2];
+        return arbitraryBitrateData[2];
       case '4g':
-        return equivalentMbpsArray[3];
+        return arbitraryBitrateData[3];
       default:
         break;
     }
@@ -104,4 +104,4 @@ RMPCONNECTION.getBandwidthEstimate = function () {
   return -1;
 };
 
-export { RMPCONNECTION };
+export default RMPCONNECTION;

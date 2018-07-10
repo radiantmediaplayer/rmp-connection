@@ -1,5 +1,5 @@
 import 'core-js';
-import { RMPCONNECTION } from '../../js/rmp-connection';
+import RMPCONNECTION from '../../js/rmp-connection';
 
 (() => {
 

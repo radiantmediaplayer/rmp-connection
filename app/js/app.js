@@ -183,6 +183,10 @@ require('core-js/modules/web.dom.iterable');
 
 var _rmpConnection = require('../../js/rmp-connection');
 
+var _rmpConnection2 = _interopRequireDefault(_rmpConnection);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 (function () {
 
   'use strict';
@@ -203,12 +207,12 @@ var _rmpConnection = require('../../js/rmp-connection');
     bwElement.insertAdjacentHTML('afterbegin', htmlText);
   };
 
-  var estimate = _rmpConnection.RMPCONNECTION.getBandwidthEstimate();
+  var estimate = _rmpConnection2.default.getBandwidthEstimate();
   _appendBWData(estimate);
 
   // every 5 sec we update demo
   setInterval(function () {
-    estimate = _rmpConnection.RMPCONNECTION.getBandwidthEstimate();
+    estimate = _rmpConnection2.default.getBandwidthEstimate();
     _appendBWData(estimate);
   }, 5000);
 })();
@@ -221,7 +225,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 /**
  * @license Copyright (c) 2015-2018 Radiant Media Player 
- * rmp-connection 0.1.5 | https://github.com/radiantmediaplayer/rmp-connection
+ * rmp-connection 0.1.6 | https://github.com/radiantmediaplayer/rmp-connection
  */
 
 var RMPCONNECTION = {};
@@ -284,17 +288,17 @@ RMPCONNECTION.getBandwidthEstimate = function () {
   }
   // we have navigator.connection.effectiveType - this is our second best estimate
   // Returns the effective type of the connection meaning one of 'slow-2g', '2g', '3g', or '4g'. This value is determined using a combination of recently observed, round-trip time and downlink values.
-  var equivalentMbpsArray = _getArbitraryBitrateData();
+  var arbitraryBitrateData = _getArbitraryBitrateData();
   if (typeof navigator.connection.effectiveType === 'string' && navigator.connection.effectiveType !== '') {
     switch (navigator.connection.effectiveType) {
       case 'slow-2g':
-        return equivalentMbpsArray[0];
+        return arbitraryBitrateData[0];
       case '2g':
-        return equivalentMbpsArray[1];
+        return arbitraryBitrateData[1];
       case '3g':
-        return equivalentMbpsArray[2];
+        return arbitraryBitrateData[2];
       case '4g':
-        return equivalentMbpsArray[3];
+        return arbitraryBitrateData[3];
       default:
         break;
     }
@@ -320,7 +324,7 @@ RMPCONNECTION.getBandwidthEstimate = function () {
   return -1;
 };
 
-exports.RMPCONNECTION = RMPCONNECTION;
+exports.default = RMPCONNECTION;
 
 },{}],3:[function(require,module,exports){
 module.exports = function (it) {
