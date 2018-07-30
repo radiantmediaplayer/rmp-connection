@@ -194,13 +194,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   var bwElement = document.getElementById('bw');
   var time = window.performance.now();
 
-  var _appendBWData = function _appendBWData(estimate) {
+  var _appendBWData = function _appendBWData(inputEstimate) {
     var newTime = Math.round((window.performance.now() - time) / 1000);
     var text = '';
-    if (estimate < 0) {
+    if (inputEstimate < 0) {
       text = '<strong>unknown</strong>';
     } else {
-      text = '<strong>' + estimate + ' Mbps</strong>';
+      text = '<strong>' + inputEstimate + ' Mbps</strong>';
     }
     text += ' - ' + newTime + ' seconds after first test';
     var htmlText = '<p>' + text + '</p>';
@@ -225,7 +225,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 /**
  * @license Copyright (c) 2015-2018 Radiant Media Player 
- * rmp-connection 0.1.6 | https://github.com/radiantmediaplayer/rmp-connection
+ * rmp-connection 0.1.7 | https://github.com/radiantmediaplayer/rmp-connection
  */
 
 var RMPCONNECTION = {};
