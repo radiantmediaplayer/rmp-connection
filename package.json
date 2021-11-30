@@ -1,14 +1,23 @@
 {
   "name": "rmp-connection",
-  "version": "0.2.0",
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
-    "babelify": "^10.0.0"
+  "version": "1.0.0",
+  "author": "Radiant Media Player <support@radiantmediaplayer.com>",
+  "description": "Client-side JavaScript to detect effective available bandwidth in a web environment without using AJAX or Fetch",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radiantmediaplayer/rmp-connection.git"
   },
-  "dependencies": {
-    "@babel/polyfill": "^7.2.5"
-  }
+  "main": "js/rmp-connection.js",
+  "keywords": [
+    "network",
+    "information",
+    "media",
+    "bandwidth",
+    "javascript"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radiantmediaplayer/rmp-connection/issues"
+  },
+  "homepage": "https://www.radiantmediaplayer.com/docs/latest/gist/rmp-connection/app/"
 }

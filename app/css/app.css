@@ -1,6 +1,10 @@
 @charset 'utf-8';
 
+body {
+  font-family: "PT Sans", sans-serif;
+}
+
 #bw {
   overflow: auto;
-  height: 400px;
+  height: 500px;
 }
