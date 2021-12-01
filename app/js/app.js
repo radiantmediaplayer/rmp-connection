@@ -1,4 +1,4 @@
-import RmpConnection from '../../js/rmp-connection';
+import RmpConnection from '../../js/rmp-connection.js';
 
 const bwElement = document.getElementById('bw');
 const time = window.performance.now();

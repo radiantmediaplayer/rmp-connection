@@ -4,12 +4,23 @@
  * rmp-connection is released under MIT | https://github.com/radiantmediaplayer/rmp-connection/blob/master/LICENSE
  */
 
+/**
+ * The class to instantiate RmpConnection
+ * @export
+ * @class RmpConnection
+*/
 export default class RmpConnection {
 
+  /**
+    * @constructor
+    */
   constructor() {
     this.connectionType = '';
   }
 
+  /** 
+    * @private
+    */
   _getConnectionType() {
     if (typeof navigator.connection.type === 'string' && navigator.connection.type !== '') {
       return navigator.connection.type;
@@ -17,6 +28,9 @@ export default class RmpConnection {
     return '';
   }
 
+  /** 
+   * @return {number}
+   */
   getBandwidthEstimate() {
     // we are not in a supported environment - exit
     if (typeof window === 'undefined') {
