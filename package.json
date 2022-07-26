@@ -1,6 +1,6 @@
 {
   "name": "rmp-connection",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Radiant Media Player <support@radiantmediaplayer.com>",
   "description": "Client-side JavaScript to detect effective available bandwidth in a web environment without using AJAX or Fetch",
   "repository": {

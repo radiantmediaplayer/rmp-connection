@@ -1,20 +1,20 @@
 # rmp-connection
 
-Client-side JavaScript to detect effective available bandwidth in a web envrionment WITHOUT using AJAX or Fetch. This is based on the [W3C Network Information API](http://wicg.github.io/netinfo/).
+Client-side JavaScript to detect effective available bandwidth and connection type in a web envrionment WITHOUT using AJAX or Fetch. This is based on the [W3C Network Information API](http://wicg.github.io/netinfo/).
 
-[Network Information API support is not 100% yet](https://caniuse.com/#feat=netinfo) but since it is supported in Chrome 61+, we feel it can already be used as a valid indicator.
+[Network Information API support is not 100% yet](https://caniuse.com/#feat=netinfo) but is fairly decent (works everywhere but in Safari and Firefox)
 
-We use it as a best-guess first estimate for available bandwidth to fast-start ABR streaming (with hls.js or Shaka player for example) in [Radiant Media Player](https://www.radiantmediaplayer.com).
+We use it as a best-guess first estimate for available bandwidth and connection type to fast-start ABR streaming in [Radiant Media Player](https://www.radiantmediaplayer.com).
 
 ## Usage as ES2015 module
 ```
-import { RmpConnection } from '../../js/rmp-connection';
+import RmpConnection from '../../js/rmp-connection';
 const rmpConnection = new RmpConnection();
-const estimate = rmpConnection.getBandwidthEstimate();
-console.log(estimate)
+const bandwidthData = rmpConnection.bandwidthData;
+console.log(bandwidthData);
 ```
 
-The `getBandwidthEstimate` method will return `Number` representing the estimated bandwidth in Mbps. -1 is returned if this value is not available.
+The `bandwidthData` getter will return `Object: {estimate: Number, connectionType: String}` representing the estimated bandwidth in Mbps and the connection type (possible values are 'ethernet', 'wifi', 'cellular', 'unknown', 'none'). `{-1, 'unknown'}` is returned if no value is available.
 
 ## Example
 The app/index.html demo can be found at [https://www.radiantmediaplayer.com/docs/latest/gist/rmp-connection/app/](https://www.radiantmediaplayer.com/docs/latest/gist/rmp-connection/app/)
